@@ -1,0 +1,129 @@
+.main-list-view {
+  display: none;
+}
+.camara1 p {
+  padding-left: 5px;
+}
+.camara1 {
+  justify-content: center;
+  align-items: baseline;
+  display: flex;
+  width: 35px;
+  height: 25px;
+  background-color: rgba(0, 0, 0, 0.3);
+  color: #ffff;
+  font-size: 14px;
+  font-family: regular;
+  position: absolute;
+  top: 7px;
+  left: 15px;
+  z-index: 20;
+}
+.star1 {
+  width: 35px;
+  height: 25px;
+  text-align: center;
+  font-size: 14px;
+  font-family: regular;
+  position: absolute;
+  left: 15px;
+  bottom: 10px;
+  background: rgba(0, 0, 0, 0.3);
+  color: #fff;
+  border-radius: 2px;
+  opacity: 0;
+  z-index: 20;
+}
+.images:hover .star1 {
+  opacity: 1;
+  transition: all 0.5s ease;
+}
+.images {
+  position: relative;
+}
+.images img {
+  width: 255px;
+  height: 160px;
+}
+.list-card {
+  display: flex;
+  margin-bottom: 20px;
+}
+.content {
+  margin-left: 20px;
+  width: 100%;
+  position: relative;
+}
+.top-content a {
+  text-decoration: none;
+  color: #1bc744;
+  width: 100%;
+}
+.price {
+  cursor: auto !important;
+}
+.price:focus {
+  outline: none !important;
+}
+.text p {
+  color: #000000;
+}
+.text:hover p {
+  color: #1c9cea;
+  transition: 0.5s;
+}
+.top-content {
+  display: flex;
+  justify-content: space-between;
+}
+.bottom-content {
+  display: flex;
+  position: absolute;
+  top: 80%;
+  justify-content: center;
+  width: 100%;
+}
+.bottom-content a {
+  color: #1c9cea;
+}
+.stock-no {
+  background-color: #f0f2f5;
+  border-radius: 25px;
+  margin-left: 10px;
+}
+.bottom-content p {
+  color: #888888;
+  margin: 0;
+  padding: 3px 15px;
+}
+.bottom-content span {
+  color: #000000;
+}
+@media screen and (max-width: 575px) {
+  .bottom-content {
+    width: auto;
+  }
+}
+@media screen and (max-width: 502px) {
+  .bottom-content {
+    text-align: center;
+    position: relative;
+    text-align: center;
+  }
+  .content {
+    margin-left: 0;
+    margin-top: 10px;
+  }
+  .top-content {
+    width: 100%;
+  }
+  .images img {
+    width: 100%;
+  }
+  .star1 {
+    display: none;
+  }
+  .list-card {
+    display: block;
+  }
+}

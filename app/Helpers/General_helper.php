@@ -36,8 +36,11 @@ function getByColumn($table,$select,$where)
     return $output;
 }
 
-
-
+function returnPrices()
+{
+    $data=distinctRecords('sell','price',$where=array('is_del'=>'1'));
+    return $data;
+}
 
 
 

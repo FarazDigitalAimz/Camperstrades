@@ -1,34 +1,124 @@
-<script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
-    integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
-    crossorigin="anonymous"
-></script>
-<script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-    crossorigin="anonymous"
-></script>
-<script
-    src="https://code.jquery.com/jquery-3.6.0.min.js"
-    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-    crossorigin="anonymous"
-></script>
-<script src="<?= base_url(); ?>/public/assets/js/header.js"></script>
-<script
-    src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
-    crossorigin="anonymous"
-></script>
-<script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-    crossorigin="anonymous"
-></script>
+<footer class="ct-footer">
+    <div class="footer-line"></div>
+    <div class="container">
+        <div class="footer-text">
+            <h5>Campers Trader</h5>
+            <p>
+                UK's leading platform to buy and sell campervans, caravans, and
+                motorhomes.
+            </p>
+            <div class="mail-site">
+                <p>Email: <a href="">info@camperstrader.uk</a></p>
+                <p>Website: <a href="">camperstrader.uk</a></p>
+            </div>
+        </div>
 
-<!-- select2 -->
-<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-<script>
-    $(document).ready(function () {
-        $(".js-example-basic-single").select2();
-    });
-</script>
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="footer-list">
+                    <ul class="footer-item">
+                        <li><a href="">Buy Campervans</a></li>
+                        <li><a href="">Buy Caravans</a></li>
+                        <li><a href="">Buy MotorHomes</a></li>
+                        <li><a href="">Inventory</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="subscribe">
+                    <p>Subscribe to our newsletter.</p>
+                    <div class="search-and-btn-div">
+                        <div class="search-bar-div">
+                            <input
+                                    class="search-bar"
+                                    type="text"
+                                    placeholder="someone@domain.com"
+                            />
+                        </div>
+                        <div class="subscribe-btn-div">
+                            <button class="subscribe-btn">Subscribe</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="social-links">
+                    <p>Find us on Social Media</p>
+                    <div class="social-icons">
+                        <ul class="social-list">
+                            <li>
+                                <a href=""
+                                ><img src="<?= base_url(); ?>/public/assets/home-img/facebook-rect.svg" alt=""
+                                    /></a>
+                            </li>
+                            <li>
+                                <a href=""
+                                ><img src="<?= base_url(); ?>/public/assets/home-img/twitter-bird.svg" alt=""
+                                    /></a>
+                            </li>
+                            <li>
+                                <a href=""
+                                ><img src="<?= base_url(); ?>/public/assets/home-img/instag.svg" alt=""
+                                    /></a>
+                            </li>
+                            <li>
+                                <a href=""
+                                ><img src="<?= base_url(); ?>/public/assets/home-img/linkedin.svg" alt=""
+                                    /></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="footer-list">
+                    <ul class="footer-item">
+                        <li><a href="">Contact Us</a></li>
+                        <li><a href="">Become a partner</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="copy-rights-main">
+        <div class="container">
+            <div class="copy-rights">
+                <div class="copy-rights-text">
+                    <p>
+                        © 2022. Camperstrader.uk. All rights reserved. Powered by
+                        <a href=""> Digital Aimz Inc.</a>
+                    </p>
+                </div>
+                <div class="payment">
+                    <p>Secure payment through:</p>
+                    <div class="payment-icons">
+                        <ul class="payment-list">
+                            <li>
+                                <a href=""
+                                ><img src="<?= base_url(); ?>/public/assets/home-img/Group 1445.svg" alt=""
+                                    /></a>
+                            </li>
+                            <li>
+                                <a href=""
+                                ><img src="<?= base_url(); ?>/public/assets/home-img/Group 1444.svg" alt=""
+                                    /></a>
+                            </li>
+                            <li>
+                                <a href=""
+                                ><img src="<?= base_url(); ?>/public/assets/home-img/Group 1443.svg" alt=""
+                                    /></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-end">
+        <div class="container">
+            <div class="end-text">
+                <a href="">Terms and Conditions</a>
+                <span class="center"> - </span>
+                <a href="">Privacy Policy</a>
+            </div>
+        </div>
+    </div>
+</footer>

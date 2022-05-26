@@ -7,10 +7,16 @@ helper('General');
 
 class Home extends BaseController
 {
+    public function __construct()
+    {
+        helper(['form', 'url', 'session']);
+        $this->session = \Config\Services::session();
+
+    }
     public function index()
     {
         $data['makes']=getRecords('make', 'id', 'desc',$where=array('is_del'=>1));
-        $data['prices']=$this->returnPrices();
+        $data['prices']=returnPrices();
         $data['vehicle_types']=getEnumValue('sell','vehicle_type');
         echo  view('home',$data);
     }
@@ -27,11 +33,7 @@ class Home extends BaseController
 
     }
 
-    public function returnPrices()
-    {
-        $data=distinctRecords('sell','price',$where=array('is_del'=>'1'));
-        return $data;
-    }
+
 
 
 

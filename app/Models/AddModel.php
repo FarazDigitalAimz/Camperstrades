@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use CodeIgniter\Model;
-
+helper('General');
 class AddModel extends Model
 {
     protected $DBGroup          = 'default';
@@ -41,20 +41,34 @@ class AddModel extends Model
     protected $afterDelete    = [];
 
 
-    public function searchData($make='',$model='',$page)
+    public function searchData($make='',$model='',$priceSlug='',$vehicle='',$year='',$page)
     {
         $db = \Config\Database::connect();
-        $this->select();
+        $this->select('users.name,sell.price,sell.id,make.title as make_title,model.title as model_title,sell.year,sell.mileage,sell.vehicle_type,sell.regular_price');
         $this->join('make', 'sell.make_id = make.id');
         $this->join('model', 'sell.model_id = model.id');
-        if($make!=''){
-            $this->where('sell.make_id',$make);
-        }
-        if($model!=''){
-            $this->where('sell.model_id',$model);
-        }
+        $this->join('users', 'users.id = sell.user_id');
+        if($make!=''){$this->where('sell.make_id',$make);}
+        if($model!=''){$this->where('sell.model_id',$model);}
+        if($priceSlug!=''){$this->where('sell.price >=',$priceSlug);}
+        if($vehicle!=''){$this->where('sell.vehicle_type',$vehicle);}
+        if($year!=''){$this->where('sell.year',$year);}
         $this->where('sell.status','active');
-        return $this->paginate($page);
+        $adds=$this->paginate($page);
+        $totalAdds=array();
+        foreach($adds as $add)
+        {
+            $add['totalImages']=$this->totalmages($add['id']);
+            $totalAdds[]=$add;
+        }
+        return $totalAdds;
+
+    }
+
+    public function totalmages($addID)
+    {
+        $query = $this->query("SELECT image_path,count(id) as totalImage FROM sell_images Where sell_id='$addID' GROUP BY sell_id")->getResultArray();
+        return $query;
     }
 
 

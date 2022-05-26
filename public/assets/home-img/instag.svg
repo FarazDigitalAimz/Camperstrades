@@ -1,0 +1,28 @@
+<svg id="Group_3" data-name="Group 3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 24 24">
+  <defs>
+    <clipPath id="clip-path">
+      <path id="Path_1397" data-name="Path 1397" d="M103.336,11.357c3.247,0,3.6,0,4.87.071a8.082,8.082,0,0,1,2.26.422,4.088,4.088,0,0,1,2.325,2.331,7.752,7.752,0,0,1,.429,2.26v4.8c0,3.247,0,3.6-.071,4.87a8.07,8.07,0,0,1-.422,2.273,4.084,4.084,0,0,1-2.331,2.325,7.761,7.761,0,0,1-2.26.429h-4.8c-3.247,0-3.6,0-4.87-.071a8.069,8.069,0,0,1-2.273-.435,4.259,4.259,0,0,1-2.312-2.357,7.71,7.71,0,0,1-.429-2.26V21.24c0-3.247,0-3.6.071-4.87a8.023,8.023,0,0,1,.422-2.273,3.709,3.709,0,0,1,.948-1.4,3.7,3.7,0,0,1,1.409-.916,7.744,7.744,0,0,1,2.26-.429h4.773m0-2.117c-3.247,0-3.669,0-4.942.071a9.665,9.665,0,0,0-2.9.565,5.194,5.194,0,0,0-2.117,1.409A8.062,8.062,0,0,0,91.972,13.4a9.64,9.64,0,0,0-.565,2.9c-.071,1.3-.071,1.695-.071,4.942s0,3.669.071,4.942a9.64,9.64,0,0,0,.565,2.9,5.181,5.181,0,0,0,1.409,2.117A7.057,7.057,0,0,0,95.5,32.6a9.664,9.664,0,0,0,2.9.565c1.3.071,1.695.071,4.942.071s3.669,0,4.942-.071a9.68,9.68,0,0,0,2.9-.565,5.2,5.2,0,0,0,2.117-1.409,7.057,7.057,0,0,0,1.409-2.117,9.679,9.679,0,0,0,.565-2.9c.071-1.3.071-1.695.071-4.942s0-3.669-.071-4.942a9.68,9.68,0,0,0-.565-2.9,5.194,5.194,0,0,0-1.409-2.117,8.061,8.061,0,0,0-2.117-1.409,9.68,9.68,0,0,0-2.9-.565C107,9.24,106.583,9.24,103.336,9.24Z" transform="translate(-91.336 -9.24)" fill="#fff"/>
+    </clipPath>
+    <radialGradient id="radial-gradient" cx="0.198" cy="0.944" r="1.308" gradientTransform="translate(0 0)" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#eacc7b"/>
+      <stop offset="0.353" stop-color="#ef6d3a"/>
+      <stop offset="0.607" stop-color="#db359e"/>
+      <stop offset="0.861" stop-color="#2b4ff2"/>
+    </radialGradient>
+    <clipPath id="clip-path-2">
+      <path id="Path_1398" data-name="Path 1398" d="M101.686,13.59a6,6,0,1,0,6,6h0a5.976,5.976,0,0,0-5.951-6Zm0,10a4,4,0,1,1,4-4A4,4,0,0,1,101.686,23.59Z" transform="translate(-95.686 -13.59)" fill="#fff"/>
+    </clipPath>
+    <clipPath id="clip-path-3">
+      <path id="Path_1399" data-name="Path 1399" d="M106.876,13.741a1.239,1.239,0,1,1,0-.045Z" transform="translate(-104.396 -12.48)" fill="#fff"/>
+    </clipPath>
+  </defs>
+  <g id="Mask_Group_1" data-name="Mask Group 1" clip-path="url(#clip-path)">
+    <ellipse id="Ellipse_51" data-name="Ellipse 51" cx="19.199" cy="19.429" rx="19.199" ry="19.429" transform="translate(-7.2 -7.429)" fill="url(#radial-gradient)"/>
+  </g>
+  <g id="Mask_Group_2" data-name="Mask Group 2" transform="translate(6 6)" clip-path="url(#clip-path-2)">
+    <ellipse id="Ellipse_52" data-name="Ellipse 52" cx="18.139" cy="18.356" rx="18.139" ry="18.356" transform="translate(-12.139 -12.356)" fill="url(#radial-gradient)"/>
+  </g>
+  <g id="Mask_Group_3" data-name="Mask Group 3" transform="translate(17.135 4.182)" clip-path="url(#clip-path-3)">
+    <ellipse id="Ellipse_9" data-name="Ellipse 9" cx="16.817" cy="17" rx="16.817" ry="17" transform="translate(-21.162 -10.182)" fill="url(#radial-gradient)"/>
+  </g>
+</svg>
