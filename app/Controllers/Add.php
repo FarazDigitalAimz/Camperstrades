@@ -15,17 +15,18 @@ class Add extends BaseController
         $data['priceSlug']=$priceSlug=$this->request->getGet('price');
         $data['vehicle']=$vehicle=$this->request->getGet('vehicle_type');
         $data['year']=$year=$this->request->getGet('year');
+        $data['sort']=$sort=$this->request->getGet('sort');
 
         $model = new AddModel();
         $data['makes']=getRecords('make', 'id', 'desc',$where=array('is_del'=>1));
         $data['selected_make']=$makeID=isset($makeSlug) && !empty($makeSlug) ? getByColumn('make', 'id',$where=array('is_del'=>1,'slug'=>$makeSlug))->id : '';
         $data['allModels']=isset($makeID) && !empty($makeID) ? getRecords('model', 'id', 'desc',$where=array('is_del'=>1,'make_id'=>$makeID)) : '';
         $data['selected_model']=isset($modelSlug) && !empty($modelSlug) ? getByColumn('model', 'id',$where=array('is_del'=>1,'slug'=>$modelSlug,'make_id'=>$makeID))->id : '';
-        $data['prices']=returnPrices();
+        $data['prices']=returnPrices('price',$where=array('is_del'=>'1'));
         $data['vehicle_types']=getEnumValue('sell','vehicle_type');
         if($this->request->isAJAX())
         {
-            $data['adds']=$model->searchData($makeID,$data['selected_model'],$priceSlug,$vehicle,$year,$page=5);
+            $data['adds']=$model->searchData($makeID,$data['selected_model'],$priceSlug,$vehicle,$year,$sort,$page=5);
             $data['pager'] = $model->pager;
             $data['links'] = $data['pager']->links();
             $viewdata['html']=view('adds/ajax/adds_list',$data);

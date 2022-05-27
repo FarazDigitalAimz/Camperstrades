@@ -36,12 +36,24 @@ function getByColumn($table,$select,$where)
     return $output;
 }
 
-function returnPrices()
+function returnPrices($column,$where)
 {
-    $data=distinctRecords('sell','price',$where=array('is_del'=>'1'));
+    $data=distinctRecords('sell',$column,$where);
     return $data;
 }
 
+function getVehicleMake($vehicleType)
+{
+    $db= \Config\Database::connect();
+    $builder = $db->table('sell');
+    $builder->select('make.id,make.slug,make.title');
+    $builder->join('make', 'make.id = sell.make_id');
+    $builder->groupBy('sell.make_id');
+    $query = $builder->get();
+    $output = $query->getResult();
+    return $output;
+
+}
 
 
 

@@ -188,28 +188,34 @@ $getRangeYear=array_reverse($getRangeYear);
             <div class="categories-box">
                 <div class="row">
                     <div class="collum col-sm-12 col-md-12 col-lg-4">
-                        <div class="carvans">
-                            <div class="car-text">
-                                <img src="<?= base_url(); ?>/public/assets/home-img/Group 55.svg" alt="car van" />
-                                <h6>Carvans</h6>
+                        <a href="<?= site_url('caravan')?>">
+                            <div class="carvans">
+                                <div class="car-text">
+                                    <img src="<?= base_url(); ?>/public/assets/home-img/Group 55.svg" alt="car van" />
+                                    <h6>Carvans</h6>
+                                </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                     <div class="collum col-sm-12 col-md-12 col-lg-4">
                         <div class="carvans">
-                            <div class="car-text">
-                                <img src="<?= base_url(); ?>/public/assets/home-img/Group 22.svg" alt="car van" />
-                                <h6>Campervans</h6>
-                            </div>
+                            <a href="<?= site_url('campervan')?>">
+                                <div class="car-text">
+                                    <img src="<?= base_url(); ?>/public/assets/home-img/Group 22.svg" alt="car van" />
+                                    <h6>Campervans</h6>
+                                </div>
+                            </a>
                         </div>
                     </div>
                     <div class="collum col-sm-12 col-md-12 col-lg-4">
-                        <div class="carvans">
-                            <div class="car-text">
-                                <img src="<?= base_url(); ?>/public/assets/home-img/Group 47.svg" alt="car van" />
-                                <h6>Motorhomes</h6>
+                        <a href="<?= site_url('motorhome')?>">
+                            <div class="carvans">
+                                <div class="car-text">
+                                    <img src="<?= base_url(); ?>/public/assets/home-img/Group 47.svg" alt="car van" />
+                                    <h6>Motorhomes</h6>
+                                </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 </div>
             </div>

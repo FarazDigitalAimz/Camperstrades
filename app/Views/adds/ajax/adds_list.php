@@ -5,15 +5,15 @@
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-xxs-12">
             <div class="list-card">
                 <div class="images ">
-                    <?php if(!empty($add['totalImages'][0]['image_path'])){?>
-                        <img src="https://dev.camperstrader.uk/assets/sell_images/<?php echo isset($add['totalImages'][0]['image_path']) ? $add['totalImages'][0]['image_path'] : 0?>"  alt="" />
+                    <?php if(!empty($add['totalImages']['image_path'])){?>
+                        <img src="https://dev.camperstrader.uk/assets/sell_images/<?php echo isset($add['totalImages']['image_path']) ? $add['totalImages']['image_path'] : 0?>"  alt="" />
                     <?php }else {?>
                         <img src="<?php echo base_url()?>/public/assets/adds_images/default.png" alt=""/>
                     <?php  }?>
                     <div class="icons">
                         <div class="camara1">
                             <i class="fa fa-camera"></i>
-                            <p><?= isset($add['totalImages'][0]['totalImage']) ? $add['totalImages'][0]['totalImage'] : 0?></p>
+                            <p><?= isset($add['totalImages']['totalImage']) ? $add['totalImages']['totalImage'] : 0?></p>
                         </div>
                         <div class="star1">
                             <i class="fa fa-star"></i>
@@ -31,9 +31,13 @@
                         <button class="price"><?= isset($add['regular_price']) ? '<s>£ '.$add['regular_price'].'</s><br>' : ''?>£ <?php echo $add['price']?></button>
                     </div>
                     <div class="bottom-content">
-                        <a href="#"><?= esc(ucfirst($add['name']));?></a>
-                        <div class="stock-no">
-                            <p>STOCK# <span><?php echo '000'.$add['id']?></span></p>
+                        <div class="top-icons">
+                            <i class="fa-solid fa-certificate"><p><?= esc(ucfirst($add['condition']));?></p></i>
+                            <i class="fa-solid fa-gears"><p><?= esc(ucfirst($add['make_title']));?></p></i>
+                        </div>
+                        <div class="bottom-icons">
+                            <i class="fa-solid fa-calendar-days"><p><?= esc($add['year']);?></p></i>
+                            <i class="fa-solid fa-bed"><p>4</p></i>
                         </div>
                     </div>
                 </div>
@@ -56,15 +60,15 @@
             <div class="card">
                 <a href="" class="rmv_txt_drctn">
                     <div class="image">
-                        <?php if(!empty($add['totalImages'][0]['image_path'])){?>
-                        <img src="https://dev.camperstrader.uk/assets/sell_images/<?php echo isset($add['totalImages'][0]['image_path']) ? $add['totalImages'][0]['image_path'] : 0?>" alt="" />
+                        <?php if(!empty($add['totalImages']['image_path'])){?>
+                        <img src="https://dev.camperstrader.uk/assets/sell_images/<?php echo isset($add['totalImages']['image_path']) ? $add['totalImages']['image_path'] : 0?>" alt="" />
                         <?php }else {?>
                             <img src="<?php echo base_url()?>/public/assets/adds_images/default.png" alt=""/>
                         <?php  }?>
                         <div class="icons">
                             <div class="camara">
                                 <i class="fa fa-camera"></i>
-                                <p><?= isset($add['totalImages'][0]['totalImage']) ? $add['totalImages'][0]['totalImage'] : 0?></p>
+                                <p><?= isset($add['totalImages']['totalImage']) ? $add['totalImages']['totalImage'] : 0?></p>
                             </div>
                             <div class="star">
                                 <i class="fa fa-star"></i>
@@ -77,7 +81,14 @@
                     </div>
                     <hr />
                     <div class="certified">
-                        <p><?= esc(ucfirst($add['vehicle_type']));?></p>
+                        <div class="top-icons">
+                            <i class="fa-solid fa-certificate"><p><?= esc(ucfirst($add['condition']));?></p></i>
+                            <i class="fa-solid fa-gears"><p><?= esc(ucfirst($add['make_title']));?></p></i>
+                        </div>
+                        <div class="bottom-icons">
+                            <i class="fa-solid fa-calendar-days"><p><?= esc($add['year']);?></p></i>
+                            <i class="fa-solid fa-bed"><p>4</p></i>
+                        </div>
                     </div>
                 </a>
             </div>

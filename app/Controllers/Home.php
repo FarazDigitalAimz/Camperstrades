@@ -16,7 +16,7 @@ class Home extends BaseController
     public function index()
     {
         $data['makes']=getRecords('make', 'id', 'desc',$where=array('is_del'=>1));
-        $data['prices']=returnPrices();
+        $data['prices']=returnPrices('price',$where=array('is_del'=>1));
         $data['vehicle_types']=getEnumValue('sell','vehicle_type');
         echo  view('home',$data);
     }

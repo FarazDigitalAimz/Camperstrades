@@ -1,6 +1,6 @@
 /* search option */
 .inventory {
-  margin-top: 85px;
+  margin-top: 10px;
 }
 
 .search-head {
@@ -73,12 +73,12 @@
   display: flex;
 }
 .top-icons p {
-  font-family: poppins;
+  font-family: regular;
   font-size: 14px;
 }
 .bottom-icons p {
   font-size: 14px;
-  font-family: poppins;
+  font-family: regular;
 }
 .fa-certificate:before {
   padding-right: 10px;
@@ -110,6 +110,7 @@
   padding-right: 20px;
   display: flex;
 }
+
 .card-title {
   font-size: 14px !important;
   font-family: regular !important;
@@ -134,7 +135,10 @@
   background: #1c9cea;
   color: #ffff;
   width: 70px;
-  height: 35px;
+  height: 45px;
+}
+.price s {
+  color: #000;
 }
 .card-body {
   display: flex;
@@ -289,4 +293,35 @@
   .page-item {
     padding: 0 10px;
   }
+}
+/* ------------------- */
+.main-text {
+  margin: 20px 0 50px;
+  font-family: regular;
+  font-size: 14px;
+}
+.text-heading h1 {
+  font-size: 35px;
+  text-align: center;
+}
+.bottom-text {
+  font-family: regular;
+  margin-top: 30px;
+}
+.bottom-text p,
+ol li {
+  color: #555555;
+  font-size: 14px;
+}
+.bottom-text h2 {
+  font-size: 30px;
+}
+.bottom-text h3 {
+  font-size: 26px;
+}
+.bottom-text h4 {
+  font-size: 16px;
+}
+.bottom-text h5 {
+  font-size: 14px;
 }

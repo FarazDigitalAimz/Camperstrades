@@ -41,19 +41,33 @@ class AddModel extends Model
     protected $afterDelete    = [];
 
 
-    public function searchData($make='',$model='',$priceSlug='',$vehicle='',$year='',$page)
+    public function searchData($make='',$model='',$priceSlug='',$vehicle='',$year='',$sort='',$page)
     {
         $db = \Config\Database::connect();
-        $this->select('users.name,sell.price,sell.id,make.title as make_title,model.title as model_title,sell.year,sell.mileage,sell.vehicle_type,sell.regular_price');
+        $this->select('users.name,sell.price,sell.id,make.title as make_title,model.title as model_title,sell.year,sell.mileage,sell.vehicle_type,sell.regular_price,sell.condition');
         $this->join('make', 'sell.make_id = make.id');
         $this->join('model', 'sell.model_id = model.id');
         $this->join('users', 'users.id = sell.user_id');
         if($make!=''){$this->where('sell.make_id',$make);}
         if($model!=''){$this->where('sell.model_id',$model);}
-        if($priceSlug!=''){$this->where('sell.price >=',$priceSlug);}
+        if($priceSlug!=''){$this->where('sell.price <=',$priceSlug);}
         if($vehicle!=''){$this->where('sell.vehicle_type',$vehicle);}
         if($year!=''){$this->where('sell.year',$year);}
         $this->where('sell.status','active');
+        $sort=isset($sort) && !empty($sort) ? $sort : 'desc';
+        switch ($sort) {
+            case "old":
+                $this->orderBy('sell.id','asc');
+                break;
+            case "high-price":
+                $this->orderBy('sell.price','desc');
+                break;
+            case "low-price":
+                $this->orderBy('sell.price','asc');
+                break;
+            default:
+                $this->orderBy('sell.id','desc');
+        }
         $adds=$this->paginate($page);
         $totalAdds=array();
         foreach($adds as $add)
@@ -67,7 +81,7 @@ class AddModel extends Model
 
     public function totalmages($addID)
     {
-        $query = $this->query("SELECT image_path,count(id) as totalImage FROM sell_images Where sell_id='$addID' GROUP BY sell_id")->getResultArray();
+        $query = $this->query("SELECT image_path,count(id) as totalImage FROM sell_images Where sell_id='$addID' GROUP BY sell_id")->getRowArray();
         return $query;
     }
 

@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Campertrader</title>
+    <title>Camperstrader</title>
     <link rel="stylesheet" href="<?= base_url(); ?>/public/assets/css/main.css">
     <link
             rel="stylesheet"
@@ -80,13 +80,13 @@
                                 >
 
                                     <li>
-                                        <a class="drop-li dropdown-item" href="#">Caravans</a>
+                                        <a class="drop-li dropdown-item" href="<?= site_url('caravan')?>">Caravans</a>
                                     </li>
                                     <li>
-                                        <a class="drop-li dropdown-item" href="#">Campervans</a>
+                                        <a class="drop-li dropdown-item" href="<?= site_url('campervan')?>">Campervans</a>
                                     </li>
                                     <li>
-                                        <a class="drop-li dropdown-item" href="#">Motorhomes</a>
+                                        <a class="drop-li dropdown-item" href="<?= site_url('motorhome')?>">Motorhomes</a>
                                     </li>
                                 </ul>
                             </li>
@@ -98,7 +98,7 @@
                             </li>
 
                             <li class="list nav-item">
-                                <a href="" class="nav-link"> FAQ's</a>
+                                <a href="<?php echo site_url('faqs')?>" class="nav-link"> FAQ's</a>
                             </li>
                             <li class="list nav-item">
                                 <a href="" class="nav-link"> Blogs </a>

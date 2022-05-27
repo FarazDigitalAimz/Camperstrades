@@ -1,21 +1,16 @@
 <?= $this->extend("layout/base");?>
 <?=$this->section("styles")?>
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/>
+<link rel="stylesheet" href="<?= base_url(); ?>/public/assets/css/campervan.css" />
 <link rel="stylesheet" href="<?= base_url(); ?>/public/assets/css/list-view.css" />
-<link rel="stylesheet" href="<?= base_url(); ?>/public/assets/css/inventory.css" />
 <?= $this->endSection();?>
 <?= $this->section("content");?>
-<?php
-
-$start    = '1971-01-01';
-$end      = date('Y-m-d');
-$getRangeYear   = range(gmdate('Y', strtotime($start)), gmdate('Y', strtotime($end)));
-$getRangeYear=array_reverse($getRangeYear);
-?>
-<section class="inventory ">
-
+<section class="inventory">
     <div class="main-inventory">
         <div class="container">
+            <div class="main-text">
+                <?= isset($pageinfo) && !empty($pageinfo->short_description) ? json_decode($pageinfo->short_description) : '' ?>
+            </div>
             <div class="row position-relative">
                 <div class="img-backdrop transparent" style="position: absolute; inset: 0px; z-index: 100;
          background: rgba(255,255,255,0.7); display: none;" ></div>
@@ -35,33 +30,19 @@ $getRangeYear=array_reverse($getRangeYear);
                             <hr />
                             <select class="js-example-basic-single common" id="model_id">
                                 <option value="">Model</option>
-                                <?php if(!empty($allModels)):?>
-                                <?php foreach($allModels as $models):?>
-                                    <option value="<?= esc($models->slug)?>" <?= isset($modelSlug) && $modelSlug==$models->slug ? 'selected' : ''?>><?=esc(ucfirst($models->title));?></option>
-                                <?php endforeach;endif;?>
                             </select>
                             <hr />
-                            <select
-                                    class="js-example-basic-single w-100 common"
-                                     id="price"
-                            >
+                            <select class="js-example-basic-single w-100 common" id="price">
                                 <option value="">Max Price</option>
                                 <?php foreach($prices as $price):?>
-                                    <option value="<?= esc($price->price)?>" <?= isset($priceSlug) && $priceSlug==$price->price ? 'selected' : ''?>><?=esc('£'.$price->price);?></option>
-                                <?php endforeach;?>
-                            </select>
-                            <hr />
-                            <select class="choose js-example-basic-single w-100 common" id="vehicle_type" >
-                                <option value="">Choose Vehicle Type</option>
-                                <?php foreach($vehicle_types as $vehicle_type):?>
-                                    <option value="<?= esc($vehicle_type)?>" <?= isset($vehicle) && $vehicle==$vehicle_type ? 'selected' : ''?>><?=esc(ucfirst($vehicle_type));?></option>
+                                    <option value="<?= esc($price->price)?>" >><?=esc('£'.$price->price);?></option>
                                 <?php endforeach;?>
                             </select>
                             <hr />
                             <select class="js-example-basic-single common" id="year">
                                 <option value="">Year</option>
-                                <?php foreach ($getRangeYear as $getRange){?>
-                                    <option value="<?php echo $getRange?>" <?php echo isset($year) && $year==$getRange ? 'selected' : '' ?>><?php echo $getRange ?></option>
+                                <?php foreach ($years as $year){?>
+                                    <option value="<?php echo $year->year?>">><?php echo $year->year ?></option>
                                 <?php } ?>
                             </select>
                             <hr />
@@ -69,14 +50,11 @@ $getRangeYear=array_reverse($getRangeYear);
                     </div>
                 </div>
                 <div class="col-md-9 col-sm-12">
-                    <div class="sort" >
+                    <div class="sort">
                         <div class="sort-main">
                             <div class="sort-menu">
                                 <span class="sort-lable">SORT BY:</span>
-                                <select
-                                        class="js-example-basic-single test-search common"
-                                        name="sort" id="sort"
-                                >
+                                <select class="js-example-basic-single test-search common" name="sort" id="sort">
                                     <option value="new">Date: newest first</option>
                                     <option value="old">Date: oldest first</option>
                                     <option value="high-price">Price :higher first</option>
@@ -99,15 +77,22 @@ $getRangeYear=array_reverse($getRangeYear);
                         <hr />
                     </div>
                     <div id="response_search"></div>
+
                 </div>
+            </div>
+            <div class="bottom-text">
+                <?= isset($pageinfo) && !empty($pageinfo->description) ? json_decode($pageinfo->description) : '' ?>
+
 
             </div>
-
         </div>
     </div>
-</section>
+    <div>
 
+    </div>
+</section>
 <?= $this->endSection();?>
+
 <?=$this->section("scripts")?>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script src="<?= base_url(); ?>/public/assets/js/list-view.js"></script>
@@ -116,7 +101,7 @@ $getRangeYear=array_reverse($getRangeYear);
     $(document).ready(function () {
         $(".js-example-basic-single").select2();
     });
-   // var default=defaultFunction();
+    // var default=defaultFunction();
     var url_string=window.location.href;
     var url = new URL(url_string);
     var c = url.searchParams.get("page");
@@ -127,13 +112,13 @@ $getRangeYear=array_reverse($getRangeYear);
     }else{
         page_no=1;
     }
-   $(window).on('popstate', function(event) {
-       defaultFunction(page_no)
-   });
+    $(window).on('popstate', function(event) {
+        defaultFunction(page_no)
+    });
 
-   $( document ).ready(function() {
-       defaultFunction();
-   });
+    $( document ).ready(function() {
+        defaultFunction();
+    });
     function defaultFunction(page_no=1)
     {
         $('.img-backdrop').show();
@@ -147,39 +132,39 @@ $getRangeYear=array_reverse($getRangeYear);
             // DataTPE:JSON,
             headers: {'X-Requested-With': 'XMLHttpRequest'},
             success: function (data) {
-            var response=JSON.parse(data);
-            $('.img-backdrop').hide();
-            $('#response_search').html('');
-            $('#response_search').append(response.html);
+                var response=JSON.parse(data);
+                $('.img-backdrop').hide();
+                $('#response_search').html('');
+                $('#response_search').append(response.html);
 
             }
         })
     }
 
-   $(document).on('click', 'ul.pagination li a', function(e) {
-       e.preventDefault();
-       var href=$(this).attr("href");
-       const nextURL = href;
-       const nextTitle = 'Adds';
-       const nextState = { additionalInformation: 'Updated the URL with JS' };
-       window.history.pushState(nextState, nextTitle, nextURL);
-       window.history.replaceState(nextState, nextTitle, nextURL);
-       $('.img-backdrop').show();
-           $.ajax({
-               url: href,
-               beforeSend: function (f) {
+    $(document).on('click', 'ul.pagination li a', function(e) {
+        e.preventDefault();
+        var href=$(this).attr("href");
+        const nextURL = href;
+        const nextTitle = 'Adds';
+        const nextState = { additionalInformation: 'Updated the URL with JS' };
+        window.history.pushState(nextState, nextTitle, nextURL);
+        window.history.replaceState(nextState, nextTitle, nextURL);
+        $('.img-backdrop').show();
+        $.ajax({
+            url: href,
+            beforeSend: function (f) {
 
-               },
-               method: 'GET',
-               headers: {'X-Requested-With': 'XMLHttpRequest'},
-               success: function (data) {
-                   $('.img-backdrop').hide();
-                   var response=JSON.parse(data);
-                   $('#response_search').html('');
-                   $('#response_search').append(response.html);
-               }
-           })
-   });
+            },
+            method: 'GET',
+            headers: {'X-Requested-With': 'XMLHttpRequest'},
+            success: function (data) {
+                $('.img-backdrop').hide();
+                var response=JSON.parse(data);
+                $('#response_search').html('');
+                $('#response_search').append(response.html);
+            }
+        })
+    });
 
     $(".make_id").change(function(){
         $.ajax({
@@ -214,7 +199,7 @@ $getRangeYear=array_reverse($getRangeYear);
         var make_title=$('.make_id').val();
         var model=$('#model_id').val();
         var price=$('#price').val();
-        var vehicle_type=$('#vehicle_type').val();
+       // var vehicle_type=$('#vehicle_type').val();
         var year=$('#year').val();
         var sort=$('#sort').val();
         history.pushState(null, "", location.href.split("?")[0]);
@@ -223,7 +208,7 @@ $getRangeYear=array_reverse($getRangeYear);
         if(make_title!=''){url.searchParams.append('make_id',make_title );}
         if(model!=''){url.searchParams.append('model',model );}
         if(price!=''){url.searchParams.append('price',price );}
-        if(vehicle_type!=''){url.searchParams.append('vehicle_type',vehicle_type );}
+       // if(vehicle_type!=''){url.searchParams.append('vehicle_type',vehicle_type );}
         if(year!=''){url.searchParams.append('year',year );}
         if(sort!=''){url.searchParams.append('sort',sort );}
         //window.history.pushState("", "Adds Listing", "/" + url );

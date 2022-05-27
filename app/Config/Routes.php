@@ -25,6 +25,7 @@ if (file_exists(SYSTEMPATH . 'Config/Routes.php')) {
 $routes->get('/', 'App\Controllers\Home::index');
 $routes->post('/get-model', 'App\Controllers\Home::getModel');
 $routes->get('adds', 'App\Controllers\Add::index');
+$routes->get('/(:any)', 'App\Controllers\PageController::index/$1');
 
 /*
  * --------------------------------------------------------------------
